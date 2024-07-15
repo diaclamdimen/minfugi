@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas Example</title>
+</head>
+<body>
+  <script>
+    // Function to create a canvas element
+    function domCanvas(width, height) {
+      var canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      document.body.appendChild(canvas); // Append canvas to the body (for visibility)
+      return canvas;
+    }
+
+    // Create a 1x1 canvas and get its 2D rendering context
+    var canvas = domCanvas(1, 1);
+    var context$2 = canvas ? canvas.getContext('2d') : null;
+
+    if (context$2) {
+      // Draw something on the canvas (even though it's very small)
+      context$2.fillStyle = 'red';
+      context$2.fillRect(0, 0, 1, 1);
+    } else {
+      console.error('Failed to create canvas or get 2D context');
+    }
+  </script>
+</body>
+</html>
