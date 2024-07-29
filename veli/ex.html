@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<body>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <div id="display">0 ms</div>
+
+    <script>
+        let startTime, endTime;
+        const display = document.getElementById('display');
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            startTime = Date.now();
+            display.textContent = 'Running...';
+        });
+
+        document.getElementById('stopButton').addEventListener('click', () => {
+            endTime = Date.now();
+            let elapsed = endTime - startTime;
+            display.textContent = `${elapsed} ms`;
+        });
+    </script>
+</body>
+</html>
