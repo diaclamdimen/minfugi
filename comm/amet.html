@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw Region</title>
+</head>
+<body>
+    <canvas id="mapCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+    <script>
+        const region = {
+            name: "Sweden",
+            coords: "140,40,160,50,170,30,150,20"
+        };
+
+        const parseCoords = (coordString) => {
+            const coordsArray = coordString.split(',').map(Number);
+            let points = [];
+            for (let i = 0; i < coordsArray.length; i += 2) {
+                points.push({ x: coordsArray[i], y: coordsArray[i + 1] });
+            }
+            return points;
+        };
+
+        const swedenCoords = parseCoords(region.coords);
+
+        const canvas = document.getElementById('mapCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw the region using the coordinates
+        ctx.beginPath();
+        ctx.moveTo(swedenCoords[0].x, swedenCoords[0].y);
+        for (let i = 1; i < swedenCoords.length; i++) {
+            ctx.lineTo(swedenCoords[i].x, swedenCoords[i].y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    </script>
+</body>
+</html>
